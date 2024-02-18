@@ -13,7 +13,7 @@ public class BankAccountStepDefinitions
         _scenarioContext = scenarioContext;
     }
     
-    [Given(@"a customer opens a new Checking account with an initial deposit of (.*)")]
+    [Given(@"a customer opens a new Checking account with an initial deposit of \$(.*)")]
     public void GivenACustomerOpensANewCheckingAccountWithAnInitialDepositOf(double value)
     {
         var account = new CheckingAccount(value);
@@ -23,14 +23,21 @@ public class BankAccountStepDefinitions
     [When(@"checking the balance")]
     public void WhenCheckingTheBalance()
     {
-        var account = (CheckingAccount)_scenarioContext["Account"];
+        var account = (Account)_scenarioContext["Account"];
         account.UpdateBalance();
     }
 
-    [Then(@"the balance the account's balance should be (.*)")]
+    [Then(@"the balance the account's balance should be \$(.*)")]
     public void ThenTheBalanceTheAccountsBalanceShouldBe(double value)
     {
-        var account = (CheckingAccount)_scenarioContext["Account"];
+        var account = (Account)_scenarioContext["Account"];
         account.Balance.Should().Be(value);
+    }
+
+    [Given(@"a customer opens a new Savings account with an initial deposit of \$(.*)")]
+    public void GivenACustomerOpensANewSavingsAccountWithAnInitialDepositOf(double value)
+    {
+        var account = new SavingsAccount(value);
+        _scenarioContext["Account"] = account;
     }
 }
