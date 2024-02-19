@@ -2,27 +2,44 @@
 
 public abstract class Account
 {
-    protected Account() {}
+    private readonly List<Transaction> _transactions;
+    public IEnumerable<Transaction> Transactions => _transactions;
 
-    protected Account(double  value)
+    protected Account()
     {
-        Balance = value;
+        _transactions = new List<Transaction>();
     }
 
-    public double Balance { get; private set; }
-    
-    public void UpdateBalance()
+    protected Account(double  value) : this()
     {
-        //nothing for the time being... but stay tuned.
+        Deposit(value, "Initial deposit");
     }
 
-    public void Deposit(double value)
+    public double CheckBalance()
     {
-        Balance += value;
+        return _transactions.Sum(x => x.Value);
+    }
+
+    public IEnumerable<(string date, string value, string? reference)> GetStatement(DateTime start, DateTime end = default)
+    {
+        /* Ideally, this method would look like the snippet below.
+         
+        end = end == default ? DateTime.MaxValue : end;
+        return _transactions.Where(t => t.Date >= start && t.Date <= end).ToList(); */
+
+        // However, to keep it simple...
+        return _transactions
+            .Select(t => ("«DATE»", t.Value.ToString("C"), t.Reference))
+            .ToList();
+    }
+
+    public void Deposit(double value, string reference = "-")
+    {
+        _transactions.Add(new Transaction(DateTime.UtcNow, Math.Abs(value), reference));
     }
 
     public void Withdraw(double value)
     {
-        Balance -= value;
+        _transactions.Add(new Transaction(DateTime.UtcNow, -Math.Abs(value)));
     }
 }

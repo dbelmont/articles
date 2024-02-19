@@ -24,14 +24,13 @@ public class BankAccountStepDefinitions
     public void WhenCheckingTheBalance()
     {
         var account = (Account)_scenarioContext["Account"];
-        account.UpdateBalance();
+        _scenarioContext["Balance"] = account.CheckBalance();
     }
 
     [Then(@"the account's balance should be \$(.*)")]
     public void ThenTheAccountsBalanceShouldBe(double value)
     {
-        var account = (Account)_scenarioContext["Account"];
-        account.Balance.Should().Be(value);
+        _scenarioContext["Balance"].Should().Be(value);
     }
 
     [Given(@"a customer opens a new Savings account with an initial deposit of \$(.*)")]
@@ -47,11 +46,40 @@ public class BankAccountStepDefinitions
         var account = (Account)_scenarioContext["Account"];
         account.Deposit(value);
     }
+    [Given(@"a customer makes a deposit of \$(.*) into his/hers account with the reference ""(.*)""")]
+    public void GivenACustomerMakesADepositOfIntoHisHersAccountWithReference(double value, string reference)
+    {
+        var account = (Account)_scenarioContext["Account"];
+        account.Deposit(value, reference);
+    }
 
     [Given(@"a customer makes a withdraw of \$(.*) from his/hers account")]
     public void GivenACustomerMakesAWithdrawOfFromHisHersAccount(double value)
     {
         var account = (Account)_scenarioContext["Account"];
         account.Withdraw(value);
+    }
+
+    [When(@"a transactions statement is requested")]
+    public void WhenATransactionsStatementIsRequested()
+    {
+        var account = (Account)_scenarioContext["Account"];
+        _scenarioContext["Transactions"] = account.GetStatement(DateTime.Now) ?? Array.Empty<(string, string, string?)>();
+    }
+
+    [Then(@"the following statement should be returned to the customer")]
+    public void ThenTheFollowingStatementShouldBeReturnedToTheCustomer(Table table)
+    {
+        var transactions = (_scenarioContext["Transactions"] as IEnumerable<(string Date, string Value, string? Reference)>).ToList();
+        transactions.Should().HaveCount(table.RowCount);
+        
+        foreach (var row in table.Rows)
+        {
+            var transaction = transactions.First();
+            row["Date"].Should().Be(transaction.Date);
+            row["Value"].Should().Be(transaction.Value);
+            row["Reference"].Should().Be(transaction.Reference);
+            transactions.Remove(transaction);
+        }
     }
 }
