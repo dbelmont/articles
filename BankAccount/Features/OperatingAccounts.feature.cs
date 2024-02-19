@@ -122,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 12
- testRunner.Given("a customer makes a deposit of $30.0 into his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a customer makes a deposit of $30.0 into an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
  testRunner.When("checking the balance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -166,7 +166,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 17
- testRunner.Given("a customer makes a withdraw of $30.0 from his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a customer makes a withdraw of $30.0 from an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 18
  testRunner.When("checking the balance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -210,10 +210,10 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 22
- testRunner.Given("a customer makes a deposit of $30.0 into his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a customer makes a deposit of $30.0 into an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 23
- testRunner.And("a customer makes a withdraw of $30.0 from his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("a customer makes a withdraw of $30.0 from an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 24
  testRunner.When("checking the balance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

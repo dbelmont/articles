@@ -25,7 +25,10 @@ public abstract class Account
         /* Ideally, this method would look like the snippet below.
          
         end = end == default ? DateTime.MaxValue : end;
-        return _transactions.Where(t => t.Date >= start && t.Date <= end).ToList(); */
+        return _transactions
+            .Where(t => t.Date >= start && t.Date <= end)
+            .Select(t => (t.Date.ToString("yyyy-MM-dd HH:mm:ss"), t.Value.ToString("C"), t.Reference))
+            .ToList(); */
 
         // However, to keep it simple...
         return _transactions

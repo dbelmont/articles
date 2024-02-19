@@ -40,20 +40,20 @@ public class BankAccountStepDefinitions
         _scenarioContext["Account"] = account;
     }
 
-    [Given(@"a customer makes a deposit of \$(.*) into his/hers account")]
+    [Given(@"a customer makes a deposit of \$(.*) into an account")]
     public void GivenACustomerMakesADepositOfIntoHisHersAccount(double value)
     {
         var account = (Account)_scenarioContext["Account"];
         account.Deposit(value);
     }
-    [Given(@"a customer makes a deposit of \$(.*) into his/hers account with the reference ""(.*)""")]
+    [Given(@"a customer makes a deposit of \$(.*) into an account with the reference ""(.*)""")]
     public void GivenACustomerMakesADepositOfIntoHisHersAccountWithReference(double value, string reference)
     {
         var account = (Account)_scenarioContext["Account"];
         account.Deposit(value, reference);
     }
 
-    [Given(@"a customer makes a withdraw of \$(.*) from his/hers account")]
+    [Given(@"a customer makes a withdraw of \$(.*) from an account")]
     public void GivenACustomerMakesAWithdrawOfFromHisHersAccount(double value)
     {
         var account = (Account)_scenarioContext["Account"];
