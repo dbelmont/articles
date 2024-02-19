@@ -27,8 +27,8 @@ public class BankAccountStepDefinitions
         account.UpdateBalance();
     }
 
-    [Then(@"the balance the account's balance should be \$(.*)")]
-    public void ThenTheBalanceTheAccountsBalanceShouldBe(double value)
+    [Then(@"the account's balance should be \$(.*)")]
+    public void ThenTheAccountsBalanceShouldBe(double value)
     {
         var account = (Account)_scenarioContext["Account"];
         account.Balance.Should().Be(value);
@@ -39,5 +39,19 @@ public class BankAccountStepDefinitions
     {
         var account = new SavingsAccount(value);
         _scenarioContext["Account"] = account;
+    }
+
+    [Given(@"a customer makes a deposit of \$(.*) into his/hers account")]
+    public void GivenACustomerMakesADepositOfIntoHisHersAccount(double value)
+    {
+        var account = (Account)_scenarioContext["Account"];
+        account.Deposit(value);
+    }
+
+    [Given(@"a customer makes a withdraw of \$(.*) from his/hers account")]
+    public void GivenACustomerMakesAWithdrawOfFromHisHersAccount(double value)
+    {
+        var account = (Account)_scenarioContext["Account"];
+        account.Withdraw(value);
     }
 }

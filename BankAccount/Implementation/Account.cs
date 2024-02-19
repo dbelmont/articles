@@ -13,6 +13,16 @@ public abstract class Account
     
     public void UpdateBalance()
     {
-        //nothing for the time being...
+        //nothing for the time being... but stay tuned.
+    }
+
+    public void Deposit(double value)
+    {
+        Balance += value;
+    }
+
+    public void Withdraw(double value)
+    {
+        Balance -= value;
     }
 }

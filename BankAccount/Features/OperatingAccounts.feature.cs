@@ -19,7 +19,7 @@ namespace BankAccount.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class OpeningAnAccountFeature : object, Xunit.IClassFixture<OpeningAnAccountFeature.FixtureData>, System.IDisposable
+    public partial class OperatingBankAccountsFeature : object, Xunit.IClassFixture<OperatingBankAccountsFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace BankAccount.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "OpeningAccounts.feature"
+#line 1 "OperatingAccounts.feature"
 #line hidden
         
-        public OpeningAnAccountFeature(OpeningAnAccountFeature.FixtureData fixtureData, BankAccount_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public OperatingBankAccountsFeature(OperatingBankAccountsFeature.FixtureData fixtureData, BankAccount_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace BankAccount.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Opening an account", "\tAs a new customer\r\n\tI want to open a bank account\r\n\tSo that I can keep my money " +
-                    "safe", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Operating bank accounts", "\tAs an bank account owner\r\n\tI want to make deposits and withdraws from my account" +
+                    "\r\n\tSo that I have some balance in my account", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +76,29 @@ namespace BankAccount.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+#line hidden
+#line 7
+ testRunner.Given("a customer opens a new Savings account with an initial deposit of $50.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         void System.IDisposable.Dispose()
         {
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Open a Checking account")]
-        [Xunit.TraitAttribute("FeatureTitle", "Opening an account")]
-        [Xunit.TraitAttribute("Description", "Open a Checking account")]
-        public virtual void OpenACheckingAccount()
+        [Xunit.SkippableFactAttribute(DisplayName="Depositing some money into an account")]
+        [Xunit.TraitAttribute("FeatureTitle", "Operating bank accounts")]
+        [Xunit.TraitAttribute("Description", "Depositing some money into an account")]
+        public virtual void DepositingSomeMoneyIntoAnAccount()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open a Checking account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 8
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Depositing some money into an account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -109,28 +118,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 9
- testRunner.Given("a customer opens a new Checking account with an initial deposit of $10.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+this.FeatureBackground();
 #line hidden
-#line 10
+#line 12
+ testRunner.Given("a customer makes a deposit of $30.0 into his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 13
  testRunner.When("checking the balance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
- testRunner.Then("the account\'s balance should be $10.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 14
+ testRunner.Then("the account\'s balance should be $80.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Open a Savings account")]
-        [Xunit.TraitAttribute("FeatureTitle", "Opening an account")]
-        [Xunit.TraitAttribute("Description", "Open a Savings account")]
-        public virtual void OpenASavingsAccount()
+        [Xunit.SkippableFactAttribute(DisplayName="Withdrawing some money from an account")]
+        [Xunit.TraitAttribute("FeatureTitle", "Operating bank accounts")]
+        [Xunit.TraitAttribute("Description", "Withdrawing some money from an account")]
+        public virtual void WithdrawingSomeMoneyFromAnAccount()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open a Savings account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Withdrawing some money from an account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -150,14 +162,64 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
- testRunner.Given("a customer opens a new Savings account with an initial deposit of $50.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+this.FeatureBackground();
 #line hidden
-#line 15
+#line 17
+ testRunner.Given("a customer makes a withdraw of $30.0 from his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 18
  testRunner.When("checking the balance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
- testRunner.Then("the account\'s balance should be $50.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 19
+ testRunner.Then("the account\'s balance should be $20.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Depositing into and withdrawing from an account")]
+        [Xunit.TraitAttribute("FeatureTitle", "Operating bank accounts")]
+        [Xunit.TraitAttribute("Description", "Depositing into and withdrawing from an account")]
+        public virtual void DepositingIntoAndWithdrawingFromAnAccount()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Depositing into and withdrawing from an account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 22
+ testRunner.Given("a customer makes a deposit of $30.0 into his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 23
+ testRunner.And("a customer makes a withdraw of $30.0 from his/hers account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+ testRunner.When("checking the balance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 25
+    testRunner.Then("the account\'s balance should be $50.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -170,12 +232,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                OpeningAnAccountFeature.FeatureSetup();
+                OperatingBankAccountsFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                OpeningAnAccountFeature.FeatureTearDown();
+                OperatingBankAccountsFeature.FeatureTearDown();
             }
         }
     }
