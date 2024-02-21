@@ -82,4 +82,11 @@ public class BankAccountStepDefinitions
             transactions.Remove(transaction);
         }
     }
+
+    [When(@"the maintenance process runs")]
+    public void WhenTheMaintenanceProcessRuns()
+    {
+        var account = (Account)_scenarioContext["Account"];
+        account.RunMaintenance();
+    }
 }

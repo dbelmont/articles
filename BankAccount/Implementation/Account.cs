@@ -41,8 +41,10 @@ public abstract class Account
         _transactions.Add(new Transaction(DateTime.UtcNow, Math.Abs(value), reference));
     }
 
-    public void Withdraw(double value)
+    public void Withdraw(double value, string reference = "-")
     {
-        _transactions.Add(new Transaction(DateTime.UtcNow, -Math.Abs(value)));
+        _transactions.Add(new Transaction(DateTime.UtcNow, -Math.Abs(value), reference));
     }
+
+    public abstract void RunMaintenance();
 }
